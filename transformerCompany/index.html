@@ -13,14 +13,14 @@
       <form ng-submit='addTransformer(faction, name, str, int, spd, end, rank, crg, fp, skill);'>
         <input type='radio' name='faction' ng-model='faction' value='autobot'>Autobot<input type='radio' name='faction' ng-model='faction' value='decepticon'>Decepticon
         <input type='text' ng-model='name' placeholder='Enter transformer name'>
-        Strength:<input type='number' ng-model='str' min='0' max='20'>
-        Intelligence:<input type='number' ng-model='int' min='0' max='20'>
-        Speed:<input type='number' ng-model='spd' min='0' max='20'>
-        Endurance:<input type='number' ng-model='end' min='0' max='20'>
-        Rank:<input type='number' ng-model='rank' min='0' max='20'>
-        Courage:<input type='number' ng-model='crg' min='0' max='20'>
-        Firepower:<input type='number' ng-model='fp' min='0' max='20'>
-        Skill:<input type='number' ng-model='skill' min='0' max='20'>
+        Strength:<input type='number' ng-model='str' min='1' max='10'>
+        Intelligence:<input type='number' ng-model='int' min='1' max='10'>
+        Speed:<input type='number' ng-model='spd' min='1' max='10'>
+        Endurance:<input type='number' ng-model='end' min='1' max='10'>
+        Rank:<input type='number' ng-model='rank' min='1' max='10'>
+        Courage:<input type='number' ng-model='crg' min='1' max='10'>
+        Firepower:<input type='number' ng-model='fp' min='1' max='10'>
+        Skill:<input type='number' ng-model='skill' min='1' max='10'>
         <button type='submit'>Add Transformer</button>
       </form>
       <div id='autobots'>
@@ -40,7 +40,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat = 'autobot in data.autobots'>
+            <tr ng-repeat='autobot in data.autobots'>
               <td>{{autobot.name}}</td>
               <td>{{autobot.strength}}</td>
               <td>{{autobot.intelligence}}</td>
@@ -71,7 +71,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat = 'decepticon in data.decepticons'>
+            <tr ng-repeat='decepticon in data.decepticons'>
               <td>{{decepticon.name}}</td>
               <td>{{decepticon.strength}}</td>
               <td>{{decepticon.intelligence}}</td>
@@ -85,6 +85,12 @@
           </tbody>
         </table>
       </div>
+      <button ng-click='battleTransformers();'>Battle!</button>
+      <h2>Battles Fought: {{data.numBattles}}</h2>
+      <h2>Winning Team ({{data.winner}}): </h2>
+      <p ng-repeat='winner in data.survivingWinners'>{{winner}}</p>
+      <h2>Survivors from losing team ({{data.loser}}):</h2>
+      <p ng-repeat='loser in data.survivingLosers'>{{loser}}</p>
     </div>
   </div>
 </body>
