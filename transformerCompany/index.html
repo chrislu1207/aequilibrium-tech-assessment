@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Transformer Company</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>The Transformer Company</h1>
+  <div ng-app='app'>
+    <div class='content' ng-controller='transformerCtrl'>
+      <form ng-submit='addTransformer(faction, name, str, int, spd, end, rank, crg, fp, skill);'>
+        <input type='radio' name='faction' ng-model='faction' value='autobot'>Autobot<input type='radio' name='faction' ng-model='faction' value='decepticon'>Decepticon
+        <input type='text' ng-model='name' placeholder='Enter transformer name'>
+        Strength:<input type='number' ng-model='str' min='0' max='20'>
+        Intelligence:<input type='number' ng-model='int' min='0' max='20'>
+        Speed:<input type='number' ng-model='spd' min='0' max='20'>
+        Endurance:<input type='number' ng-model='end' min='0' max='20'>
+        Rank:<input type='number' ng-model='rank' min='0' max='20'>
+        Courage:<input type='number' ng-model='crg' min='0' max='20'>
+        Firepower:<input type='number' ng-model='fp' min='0' max='20'>
+        Skill:<input type='number' ng-model='skill' min='0' max='20'>
+        <button type='submit'>Add Transformer</button>
+      </form>
+      <div id='autobots'>
+        <h2>Autobots</h2>
+        <table>
+          <thead>
+            <tr>              
+              <th>Name</th>
+              <th>Strength</th>
+              <th>Intelligence</th>
+              <th>Speed</th>
+              <th>Endurance</th>
+              <th>Rank</th>
+              <th>Courage</th>
+              <th>Firepower</th>
+              <th>Skill</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat = 'autobot in data.autobots'>
+              <td>{{autobot.name}}</td>
+              <td>{{autobot.strength}}</td>
+              <td>{{autobot.intelligence}}</td>
+              <td>{{autobot.speed}}</td>
+              <td>{{autobot.endurance}}</td>
+              <td>{{autobot.rank}}</td>
+              <td>{{autobot.courage}}</td>
+              <td>{{autobot.firepower}}</td>
+              <td>{{autobot.skill}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id='decepticons'>
+        <h2>Decepticons</h2>
+        <table>
+          <thead>
+            <tr>              
+              <th>Name</th>
+              <th>Strength</th>
+              <th>Intelligence</th>
+              <th>Speed</th>
+              <th>Endurance</th>
+              <th>Rank</th>
+              <th>Courage</th>
+              <th>Firepower</th>
+              <th>Skill</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat = 'decepticon in data.decepticons'>
+              <td>{{decepticon.name}}</td>
+              <td>{{decepticon.strength}}</td>
+              <td>{{decepticon.intelligence}}</td>
+              <td>{{decepticon.speed}}</td>
+              <td>{{decepticon.endurance}}</td>
+              <td>{{decepticon.rank}}</td>
+              <td>{{decepticon.courage}}</td>
+              <td>{{decepticon.firepower}}</td>
+              <td>{{decepticon.skill}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
