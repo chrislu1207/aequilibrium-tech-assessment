@@ -11,7 +11,8 @@
   <div ng-app='app'>
     <div class='content' ng-controller='transformerCtrl'>
       <form ng-submit='addTransformer(faction, name, str, int, spd, end, rank, crg, fp, skill);'>
-        <input type='radio' name='faction' ng-model='faction' value='autobot'>Autobot<input type='radio' name='faction' ng-model='faction' value='decepticon'>Decepticon
+        <input type='radio' name='faction' ng-model='faction' value='autobot' checked>Autobot
+        <input type='radio' name='faction' ng-model='faction' value='decepticon'>Decepticon
         <input type='text' ng-model='name' placeholder='Enter transformer name'>
         Strength:<input type='number' ng-model='str' min='1' max='10'>
         Intelligence:<input type='number' ng-model='int' min='1' max='10'>
@@ -86,11 +87,13 @@
         </table>
       </div>
       <button ng-click='battleTransformers();'>Battle!</button>
+      <h2>Message Log</h2>
+      <p ng-repeat='message in data.messages'>{{message}}</p>
       <h2>Battles Fought: {{data.numBattles}}</h2>
       <h2>Winning Team ({{data.winner}}): </h2>
-      <p ng-repeat='winner in data.survivingWinners'>{{winner}}</p>
+      <p ng-repeat='winner in data.survivingWinners'>{{winner.name}}</p>
       <h2>Survivors from losing team ({{data.loser}}):</h2>
-      <p ng-repeat='loser in data.survivingLosers'>{{loser}}</p>
+      <p ng-repeat='loser in data.survivingLosers'>{{loser.name}}</p>
     </div>
   </div>
 </body>
