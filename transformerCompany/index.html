@@ -5,15 +5,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="app.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 </head>
 <body>
   <h1>The Transformer Company</h1>
   <div ng-app='app'>
     <div class='content' ng-controller='transformerCtrl'>
+      <h2>Add a Transformer</h2>
       <form ng-submit='addTransformer(faction, name, str, int, spd, end, rank, crg, fp, skill);'>
         <input type='radio' name='faction' ng-model='faction' value='autobot' checked>Autobot
         <input type='radio' name='faction' ng-model='faction' value='decepticon'>Decepticon
-        <input type='text' ng-model='name' placeholder='Enter transformer name'>
+        <br>
+        Name:<input id='transformerName' type='text' ng-model='name' placeholder='Enter transformer name'>
+        <br>
         Strength:<input type='number' ng-model='str' min='1' max='10'>
         Intelligence:<input type='number' ng-model='int' min='1' max='10'>
         Speed:<input type='number' ng-model='spd' min='1' max='10'>
@@ -26,7 +30,7 @@
       </form>
       <div id='autobots'>
         <h2>Autobots</h2>
-        <table>
+        <table class='transformerTable'>
           <thead>
             <tr>              
               <th>Name</th>
@@ -51,13 +55,14 @@
               <td>{{autobot.courage}}</td>
               <td>{{autobot.firepower}}</td>
               <td>{{autobot.skill}}</td>
+              <td><button ng-click='removeAutobot(autobot);'>Remove</button></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div id='decepticons'>
         <h2>Decepticons</h2>
-        <table>
+        <table class='transformerTable'>
           <thead>
             <tr>              
               <th>Name</th>
@@ -82,10 +87,12 @@
               <td>{{decepticon.courage}}</td>
               <td>{{decepticon.firepower}}</td>
               <td>{{decepticon.skill}}</td>
+              <td><button ng-click='removeDecepticon(decepticon);'>Remove</button></td>
             </tr>
           </tbody>
         </table>
       </div>
+      <br>
       <button ng-click='battleTransformers();'>Battle!</button>
       <h2>Message Log</h2>
       <p ng-repeat='message in data.messages'>{{message}}</p>

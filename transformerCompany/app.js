@@ -45,11 +45,22 @@ angular.module('app', [])
       }
     };
 
+    $scope.removeAutobot = function(autobot) {
+      $scope.data.autobots.splice($scope.data.autobots.indexOf(autobot), 1);
+    };
+
+    $scope.removeDecepticon = function(decepticon) {
+      $scope.data.decepticons.splice($scope.data.decepticons.indexOf(decepticon), 1);
+    };
+
     $scope.battleTransformers = function() {
       var autobotWins = 0;
       var decepticonWins = 0;
       var survivingAutobots = [];
       var survivingDecepticons = [];
+      $scope.data.messages = [];
+      $scope.data.numBattles = 0;
+      
       for (var i = 0; i < Math.max($scope.data.autobots.length, $scope.data.decepticons.length); i++) {
         
         if ($scope.data.autobots[i]) {

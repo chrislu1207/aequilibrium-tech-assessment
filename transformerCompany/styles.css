@@ -1,0 +1,19 @@
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+input {
+  margin: 5px;
+}
+
+#transformerName {
+  font-size: 12px;
+  width: 300px;
+  padding: 5px;
+}
+
+.transformerTable, th, td {
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 10px;
+}
